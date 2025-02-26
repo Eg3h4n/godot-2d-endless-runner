@@ -44,7 +44,9 @@ func on_physics_process(delta : float):
 	# transition states
 	# idle state
 	if character_body_2d.is_on_floor():
-		transition.emit("Idle")
+		print("on floor after jump")
+		transition.emit("Run")
+	
 	
 func enter():
 	coyote_jump = true

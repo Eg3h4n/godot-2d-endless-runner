@@ -1,13 +1,23 @@
-[gd_scene load_steps=24 format=3 uid="uid://dvslupx2htkd"]
+[gd_scene load_steps=28 format=3 uid="uid://dvslupx2htkd"]
 
 [ext_resource type="Script" path="res://player/player_character_body_2d.gd" id="1_pnpd4"]
 [ext_resource type="Texture2D" uid="uid://b1f28wdnjmin1" path="res://player/idle/werewolf-idle.png" id="2_4j78j"]
+[ext_resource type="Texture2D" uid="uid://bm117yx2iu78q" path="res://player/fall/werewolf-fall.png" id="2_kuway"]
 [ext_resource type="Texture2D" uid="uid://bag8etwj1bn4a" path="res://player/run/werewolf-run.png" id="3_cpgqq"]
 [ext_resource type="Texture2D" uid="uid://md33wiknrjtb" path="res://player/jump/werewolf-jump.png" id="3_q5tq2"]
 [ext_resource type="Script" path="res://scripts/state_machine/node_finite_state_machine.gd" id="6_5cv3j"]
 [ext_resource type="Script" path="res://player/jump/jump_state.gd" id="7_d2x4n"]
 [ext_resource type="Script" path="res://player/idle/idle_state.gd" id="7_et1wx"]
 [ext_resource type="Script" path="res://player/run/run_state.gd" id="9_exw8j"]
+[ext_resource type="Script" path="res://player/fall/fall_state.gd" id="10_rkf7j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snpg3"]
+atlas = ExtResource("2_kuway")
+region = Rect2(0, 0, 96, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ussdg"]
+atlas = ExtResource("2_kuway")
+region = Rect2(96, 0, 96, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_40hbm"]
 atlas = ExtResource("2_4j78j")
@@ -65,6 +75,17 @@ region = Rect2(480, 0, 96, 76)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_snpg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ussdg")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_40hbm")
 }, {
 "duration": 1.0,
@@ -120,16 +141,17 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lot1j"]
 
-[node name="PlayerCharacterBody2D" type="CharacterBody2D"]
+[node name="PlayerCharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(38, -67)
 collision_layer = 2
 script = ExtResource("1_pnpd4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aa7yl")
-animation = &"jump"
+animation = &"fall"
 autoplay = "idle"
-frame_progress = 0.241269
+frame = 1
+frame_progress = 0.640876
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 22)
@@ -149,10 +171,17 @@ slow_down_speed = 1000
 script = ExtResource("9_exw8j")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
-speed = 5
-max_horizontal_speed = 5
+speed = 200
+max_horizontal_speed = 200
 
 [node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
 script = ExtResource("7_d2x4n")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+jump_height = -300.0
+jump_gravity = 800
+
+[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
+script = ExtResource("10_rkf7j")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")

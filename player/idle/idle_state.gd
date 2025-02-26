@@ -11,14 +11,13 @@ func on_process(delta : float):
 func on_physics_process(delta : float):
 	character_body_2d.velocity.x = move_toward(character_body_2d.velocity.x, 0, slow_down_speed)
 	character_body_2d.move_and_slide()
-	
 	# transition states
 	# fall state
 	if !character_body_2d.is_on_floor():
 		transition.emit("Fall")
 	# run state
-	var direction : float = GameInputEvents.movement_input()
-	if direction and character_body_2d.is_on_floor():
+	#var direction : float = GameInputEvents.movement_input()
+	if GameInputEvents.start_running() and character_body_2d.is_on_floor():
 		transition.emit("Run")
 	# jump state
 	if GameInputEvents.jump_input():

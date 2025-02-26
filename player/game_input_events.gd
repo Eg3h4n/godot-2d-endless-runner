@@ -5,6 +5,10 @@ extends Node
 static func movement_input() -> float:
 	var direction: float = Input.get_axis("move_left", "move_right")
 	return direction
+	
+static func start_running() -> bool:
+	var run_input := Input.is_action_just_pressed("move_right")
+	return run_input
 
 static func jump_input() -> bool:
 	var jump_input := Input.is_action_just_pressed("jump")
