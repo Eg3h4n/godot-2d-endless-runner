@@ -178,7 +178,7 @@ max_horizontal_speed = 200
 script = ExtResource("7_d2x4n")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
-jump_height = -300.0
+jump_height = -350.0
 jump_gravity = 800
 
 [node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]

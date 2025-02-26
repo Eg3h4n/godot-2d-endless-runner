@@ -20,6 +20,6 @@ func _physics_process(delta: float) -> void:
 			var weight: float = float(11 - smoothing_distance) / 100
 			camera_position = lerp(global_position, player.global_position, weight)
 		else:
-			camera_position = player.global_position
+			camera_position = Vector2(player.global_position.x + 100, player.global_position.y)
 			
 		global_position = camera_position.floor()
