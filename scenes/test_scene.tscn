@@ -1,4 +1,4 @@
-[gd_scene load_steps=322 format=4 uid="uid://c6vgbmcafvona"]
+[gd_scene load_steps=323 format=4 uid="uid://c6vgbmcafvona"]
 
 [ext_resource type="PackedScene" uid="uid://dulq0sn05by4u" path="res://background/parallax_background.tscn" id="1_pl5vr"]
 [ext_resource type="Texture2D" uid="uid://pv22i7grykx3" path="res://tileset/arch_1.png" id="2_p0xwu"]
@@ -161,6 +161,7 @@
 [ext_resource type="PackedScene" uid="uid://dvslupx2htkd" path="res://player/player_character_body_2d.tscn" id="159_8t2ir"]
 [ext_resource type="Script" path="res://player/player_camera_2d.gd" id="159_oq7n2"]
 [ext_resource type="Script" path="res://scenes/endless_ground.gd" id="161_s2nua"]
+[ext_resource type="PackedScene" uid="uid://dyfrniiijyx54" path="res://enemies/knight/knight_character_body_2d.tscn" id="162_qypwj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vay0b"]
 texture = ExtResource("2_p0xwu")
@@ -1393,6 +1394,9 @@ script = ExtResource("161_s2nua")
 ground1 = NodePath("../GroundTileMapLayer")
 ground2 = NodePath("../GroundTileMapLayer2")
 player = NodePath("../PlayerCharacterBody2D")
+
+[node name="KnightCharacterBody2D" parent="." instance=ExtResource("162_qypwj")]
+position = Vector2(2478, -93)
 
 [connection signal="body_entered" from="GroundTileMapLayer/Area2D" to="EndlessGround" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="GroundTileMapLayer2/Area2D" to="EndlessGround" method="_on_area_2d_body_entered"]

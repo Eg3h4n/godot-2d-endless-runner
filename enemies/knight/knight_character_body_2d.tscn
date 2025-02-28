@@ -1,0 +1,132 @@
+[gd_scene load_steps=19 format=3 uid="uid://dyfrniiijyx54"]
+
+[ext_resource type="Texture2D" uid="uid://dwwvbde1g05hj" path="res://enemies/knight/player-Run.png" id="1_5bwhw"]
+[ext_resource type="Script" path="res://scripts/state_machine/node_finite_state_machine.gd" id="2_uma2s"]
+[ext_resource type="Script" path="res://enemies/knight/enemy_run_state.gd" id="3_omihu"]
+[ext_resource type="Script" path="res://enemies/knight/enemy_fall_state.gd" id="4_m2q8c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3ya0"]
+atlas = ExtResource("1_5bwhw")
+region = Rect2(0, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc6g1"]
+atlas = ExtResource("1_5bwhw")
+region = Rect2(128, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o55yn"]
+atlas = ExtResource("1_5bwhw")
+region = Rect2(256, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wprt"]
+atlas = ExtResource("1_5bwhw")
+region = Rect2(384, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttyhl"]
+atlas = ExtResource("1_5bwhw")
+region = Rect2(512, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m67bh"]
+atlas = ExtResource("1_5bwhw")
+region = Rect2(640, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ni88"]
+atlas = ExtResource("1_5bwhw")
+region = Rect2(768, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdtbl"]
+atlas = ExtResource("1_5bwhw")
+region = Rect2(896, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcqne"]
+atlas = ExtResource("1_5bwhw")
+region = Rect2(1024, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23ohh"]
+atlas = ExtResource("1_5bwhw")
+region = Rect2(1152, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f07us"]
+atlas = ExtResource("1_5bwhw")
+region = Rect2(1280, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2s7c"]
+atlas = ExtResource("1_5bwhw")
+region = Rect2(1408, 0, 128, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_46rav"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3ya0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc6g1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o55yn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wprt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttyhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m67bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ni88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdtbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcqne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23ohh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f07us")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2s7c")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82wl1"]
+height = 44.0
+
+[node name="KnightCharacterBody2D" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 8
+collision_mask = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_46rav")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.199278
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 26)
+shape = SubResource("CapsuleShape2D_82wl1")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("2_uma2s")
+initial_node_state = NodePath("EnemyRun")
+
+[node name="EnemyRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
+script = ExtResource("3_omihu")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+speed = 75
+max_horizontal_speed = 75
+
+[node name="EnemyFall" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
+script = ExtResource("4_m2q8c")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")

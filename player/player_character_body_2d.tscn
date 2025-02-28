@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dvslupx2htkd"]
+[gd_scene load_steps=29 format=3 uid="uid://dvslupx2htkd"]
 
 [ext_resource type="Script" path="res://player/player_character_body_2d.gd" id="1_pnpd4"]
 [ext_resource type="Texture2D" uid="uid://b1f28wdnjmin1" path="res://player/idle/werewolf-idle.png" id="2_4j78j"]
@@ -141,6 +141,9 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lot1j"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cys71"]
+size = Vector2(66, 21)
+
 [node name="PlayerCharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(38, -67)
 collision_layer = 2
@@ -148,10 +151,9 @@ script = ExtResource("1_pnpd4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aa7yl")
-animation = &"fall"
+animation = &"run"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.640876
+frame_progress = 0.667636
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 22)
@@ -171,8 +173,8 @@ slow_down_speed = 1000
 script = ExtResource("9_exw8j")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
-speed = 200
-max_horizontal_speed = 200
+speed = 150
+max_horizontal_speed = 150
 
 [node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
 script = ExtResource("7_d2x4n")
@@ -185,3 +187,12 @@ jump_gravity = 800
 script = ExtResource("10_rkf7j")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="HurtBoxArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea2D"]
+position = Vector2(-8, 22.5)
+shape = SubResource("RectangleShape2D_cys71")
+debug_color = Color(0.926143, 0.123958, 0.59673, 0.42)
+
+[connection signal="body_entered" from="HurtBoxArea2D" to="." method="_on_hurt_box_area_2d_body_entered"]
