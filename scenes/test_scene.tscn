@@ -1379,7 +1379,7 @@ shape = SubResource("RectangleShape2D_xsl86")
 [node name="PlayerCamera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(57, -80)
 limit_left = 0
-limit_top = -212
+limit_top = -211
 limit_right = 24865
 limit_bottom = 0
 editor_draw_limits = true
