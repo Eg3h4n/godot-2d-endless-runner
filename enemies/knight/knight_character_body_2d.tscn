@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://dyfrniiijyx54"]
+[gd_scene load_steps=20 format=3 uid="uid://dyfrniiijyx54"]
 
 [ext_resource type="Texture2D" uid="uid://dwwvbde1g05hj" path="res://enemies/knight/player-Run.png" id="1_5bwhw"]
+[ext_resource type="Script" path="res://enemies/knight/knight_character_body_2d.gd" id="1_wgjud"]
 [ext_resource type="Script" path="res://scripts/state_machine/node_finite_state_machine.gd" id="2_uma2s"]
 [ext_resource type="Script" path="res://enemies/knight/enemy_run_state.gd" id="3_omihu"]
 [ext_resource type="Script" path="res://enemies/knight/enemy_fall_state.gd" id="4_m2q8c"]
@@ -103,6 +104,7 @@ height = 44.0
 [node name="KnightCharacterBody2D" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 8
 collision_mask = 3
+script = ExtResource("1_wgjud")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_46rav")
@@ -130,3 +132,7 @@ max_horizontal_speed = 75
 script = ExtResource("4_m2q8c")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

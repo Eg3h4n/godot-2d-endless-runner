@@ -23,6 +23,7 @@ config/layer_2="Player"
 [autoload]
 
 GameManager="*res://scripts/game_manager.gd"
+EnemyManager="*res://scripts/enemy_manager.gd"
 
 [display]
 
