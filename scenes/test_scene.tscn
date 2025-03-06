@@ -1,4 +1,4 @@
-[gd_scene load_steps=323 format=4 uid="uid://c6vgbmcafvona"]
+[gd_scene load_steps=324 format=4 uid="uid://c6vgbmcafvona"]
 
 [ext_resource type="PackedScene" uid="uid://dulq0sn05by4u" path="res://background/parallax_background.tscn" id="1_pl5vr"]
 [ext_resource type="Texture2D" uid="uid://pv22i7grykx3" path="res://tileset/arch_1.png" id="2_p0xwu"]
@@ -162,6 +162,7 @@
 [ext_resource type="Script" path="res://player/player_camera_2d.gd" id="159_oq7n2"]
 [ext_resource type="Script" path="res://scenes/endless_ground.gd" id="161_s2nua"]
 [ext_resource type="PackedScene" uid="uid://dyfrniiijyx54" path="res://enemies/knight/knight_character_body_2d.tscn" id="162_qypwj"]
+[ext_resource type="PackedScene" uid="uid://6ffeu1f3bn10" path="res://ui/start_game_screen.tscn" id="163_qq4uo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vay0b"]
 texture = ExtResource("2_p0xwu")
@@ -1379,7 +1380,7 @@ shape = SubResource("RectangleShape2D_xsl86")
 [node name="PlayerCamera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(57, -80)
 limit_left = 0
-limit_top = -211
+limit_top = -210
 limit_right = 24865
 limit_bottom = 0
 editor_draw_limits = true
@@ -1397,6 +1398,8 @@ player = NodePath("../PlayerCharacterBody2D")
 
 [node name="KnightCharacterBody2D" parent="." instance=ExtResource("162_qypwj")]
 position = Vector2(2478, -93)
+
+[node name="StartGameScreen" parent="." instance=ExtResource("163_qq4uo")]
 
 [connection signal="body_entered" from="GroundTileMapLayer/Area2D" to="EndlessGround" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="GroundTileMapLayer2/Area2D" to="EndlessGround" method="_on_area_2d_body_entered"]
