@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://dyfrniiijyx54"]
+[gd_scene load_steps=21 format=3 uid="uid://dyfrniiijyx54"]
 
 [ext_resource type="Texture2D" uid="uid://dwwvbde1g05hj" path="res://enemies/knight/player-Run.png" id="1_5bwhw"]
-[ext_resource type="Script" path="res://enemies/knight/knight_character_body_2d.gd" id="1_wgjud"]
-[ext_resource type="Script" path="res://scripts/state_machine/node_finite_state_machine.gd" id="2_uma2s"]
-[ext_resource type="Script" path="res://enemies/knight/enemy_run_state.gd" id="3_omihu"]
-[ext_resource type="Script" path="res://enemies/knight/enemy_fall_state.gd" id="4_m2q8c"]
+[ext_resource type="Script" uid="uid://6qvhak3lh27b" path="res://enemies/knight/knight_character_body_2d.gd" id="1_wgjud"]
+[ext_resource type="Texture2D" uid="uid://dijdkikgwodyf" path="res://enemies/knight/Jump4.png" id="2_gklh0"]
+[ext_resource type="Script" uid="uid://bvsqbu0sncdrn" path="res://scripts/state_machine/node_finite_state_machine.gd" id="2_uma2s"]
+[ext_resource type="Script" uid="uid://n6alqmd8hb1f" path="res://enemies/knight/enemy_run_state.gd" id="3_omihu"]
+[ext_resource type="Script" uid="uid://b2ui6u6udm0jq" path="res://enemies/knight/enemy_fall_state.gd" id="4_m2q8c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t3ya0"]
 atlas = ExtResource("1_5bwhw")
@@ -56,6 +57,14 @@ region = Rect2(1408, 0, 128, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_46rav"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gklh0")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t3ya0")
@@ -110,7 +119,6 @@ script = ExtResource("1_wgjud")
 sprite_frames = SubResource("SpriteFrames_46rav")
 animation = &"run"
 autoplay = "run"
-frame_progress = 0.199278
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

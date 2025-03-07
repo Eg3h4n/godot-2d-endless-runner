@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://6ffeu1f3bn10"]
 
-[ext_resource type="Script" path="res://ui/start_game_screen.gd" id="1_m1mvq"]
+[ext_resource type="Script" uid="uid://dk6nfbs6mi00v" path="res://ui/start_game_screen.gd" id="1_m1mvq"]
 
 [node name="StartGameScreen" type="CanvasLayer"]
 script = ExtResource("1_m1mvq")

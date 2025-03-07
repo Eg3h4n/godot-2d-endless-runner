@@ -23,3 +23,6 @@ func pause_game():
 	
 func continue_game():
 	get_tree().paused = false
+
+func game_over():
+	get_tree().paused = true

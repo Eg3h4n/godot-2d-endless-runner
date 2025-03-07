@@ -1,15 +1,15 @@
 [gd_scene load_steps=29 format=3 uid="uid://dvslupx2htkd"]
 
-[ext_resource type="Script" path="res://player/player_character_body_2d.gd" id="1_pnpd4"]
+[ext_resource type="Script" uid="uid://btkb67bxjjqfw" path="res://player/player_character_body_2d.gd" id="1_pnpd4"]
 [ext_resource type="Texture2D" uid="uid://b1f28wdnjmin1" path="res://player/idle/werewolf-idle.png" id="2_4j78j"]
 [ext_resource type="Texture2D" uid="uid://bm117yx2iu78q" path="res://player/fall/werewolf-fall.png" id="2_kuway"]
 [ext_resource type="Texture2D" uid="uid://bag8etwj1bn4a" path="res://player/run/werewolf-run.png" id="3_cpgqq"]
 [ext_resource type="Texture2D" uid="uid://md33wiknrjtb" path="res://player/jump/werewolf-jump.png" id="3_q5tq2"]
-[ext_resource type="Script" path="res://scripts/state_machine/node_finite_state_machine.gd" id="6_5cv3j"]
-[ext_resource type="Script" path="res://player/jump/jump_state.gd" id="7_d2x4n"]
-[ext_resource type="Script" path="res://player/idle/idle_state.gd" id="7_et1wx"]
-[ext_resource type="Script" path="res://player/run/run_state.gd" id="9_exw8j"]
-[ext_resource type="Script" path="res://player/fall/fall_state.gd" id="10_rkf7j"]
+[ext_resource type="Script" uid="uid://bvsqbu0sncdrn" path="res://scripts/state_machine/node_finite_state_machine.gd" id="6_5cv3j"]
+[ext_resource type="Script" uid="uid://d1ryc71ite5tx" path="res://player/jump/jump_state.gd" id="7_d2x4n"]
+[ext_resource type="Script" uid="uid://bhorw0e1wttdt" path="res://player/idle/idle_state.gd" id="7_et1wx"]
+[ext_resource type="Script" uid="uid://c87eydq6m8bno" path="res://player/run/run_state.gd" id="9_exw8j"]
+[ext_resource type="Script" uid="uid://bsce5lppf8l0j" path="res://player/fall/fall_state.gd" id="10_rkf7j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_snpg3"]
 atlas = ExtResource("2_kuway")
@@ -142,10 +142,9 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lot1j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cys71"]
-size = Vector2(66, 21)
+size = Vector2(47, 21)
 
 [node name="PlayerCharacterBody2D" type="CharacterBody2D" groups=["Player"]]
-position = Vector2(38, -67)
 collision_layer = 2
 script = ExtResource("1_pnpd4")
 
@@ -189,9 +188,11 @@ character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="HurtBoxArea2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea2D"]
-position = Vector2(-8, 22.5)
+position = Vector2(1.5, 22.5)
 shape = SubResource("RectangleShape2D_cys71")
 debug_color = Color(0.926143, 0.123958, 0.59673, 0.42)
 

@@ -11,12 +11,12 @@ config_version=5
 [application]
 
 config/name="Godot 2d endless runner"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 config/stretch/aspect="keep"
 config/size/window_height_override=630
 config/size/window_width_override=960
-config/size/viewport_height=210
+config/size/viewport_height=110
 config/size/viewport_width=320
 config/layer_2="Player"
 

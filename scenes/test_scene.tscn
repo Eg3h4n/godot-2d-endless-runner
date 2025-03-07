@@ -159,8 +159,8 @@
 [ext_resource type="Texture2D" uid="uid://fraq61kj4n2s" path="res://tileset/platform_2.png" id="157_btlp1"]
 [ext_resource type="Texture2D" uid="uid://dlub4shdvfige" path="res://tileset/platform_3.png" id="158_i5la1"]
 [ext_resource type="PackedScene" uid="uid://dvslupx2htkd" path="res://player/player_character_body_2d.tscn" id="159_8t2ir"]
-[ext_resource type="Script" path="res://player/player_camera_2d.gd" id="159_oq7n2"]
-[ext_resource type="Script" path="res://scenes/endless_ground.gd" id="161_s2nua"]
+[ext_resource type="Script" uid="uid://dwmcf26860uo1" path="res://player/player_camera_2d.gd" id="159_oq7n2"]
+[ext_resource type="Script" uid="uid://b2ajdpjsokgwq" path="res://scenes/endless_ground.gd" id="161_s2nua"]
 [ext_resource type="PackedScene" uid="uid://dyfrniiijyx54" path="res://enemies/knight/knight_character_body_2d.tscn" id="162_qypwj"]
 [ext_resource type="PackedScene" uid="uid://6ffeu1f3bn10" path="res://ui/start_game_screen.tscn" id="163_qq4uo"]
 [ext_resource type="PackedScene" uid="uid://b70bn0mwhug5k" path="res://enemies/enemy_manager.tscn" id="163_r0k35"]
@@ -1397,11 +1397,13 @@ ground1 = NodePath("../GroundTileMapLayer")
 ground2 = NodePath("../GroundTileMapLayer2")
 player = NodePath("../PlayerCharacterBody2D")
 
-[node name="StartGameScreen" parent="." instance=ExtResource("163_qq4uo")]
+[node name="StartGameScreen" parent="." node_paths=PackedStringArray("enemy_manager") instance=ExtResource("163_qq4uo")]
+enemy_manager = NodePath("../EnemyManager")
 
-[node name="EnemyManager" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("163_r0k35")]
+[node name="EnemyManager" parent="." node_paths=PackedStringArray("camera", "player_character_body_2d") instance=ExtResource("163_r0k35")]
 enemy_character_body_2d = ExtResource("162_qypwj")
 camera = NodePath("../PlayerCamera2D")
+player_character_body_2d = NodePath("../PlayerCharacterBody2D")
 
 [connection signal="body_entered" from="GroundTileMapLayer/Area2D" to="EndlessGround" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="GroundTileMapLayer2/Area2D" to="EndlessGround" method="_on_area_2d_body_entered"]
