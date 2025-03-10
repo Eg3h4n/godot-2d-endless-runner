@@ -1389,7 +1389,7 @@ script = ExtResource("159_oq7n2")
 player = NodePath("../PlayerCharacterBody2D")
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("159_8t2ir")]
-position = Vector2(25, -104)
+position = Vector2(27, -115)
 
 [node name="EndlessGround" type="Node" parent="." node_paths=PackedStringArray("ground1", "ground2", "player")]
 script = ExtResource("161_s2nua")
