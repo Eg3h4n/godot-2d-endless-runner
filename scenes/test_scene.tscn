@@ -1405,5 +1405,7 @@ enemy_character_body_2d = ExtResource("162_qypwj")
 camera = NodePath("../PlayerCamera2D")
 player_character_body_2d = NodePath("../PlayerCharacterBody2D")
 
+[node name="GameScreen" type="CanvasLayer" parent="."]
+
 [connection signal="body_entered" from="GroundTileMapLayer/Area2D" to="EndlessGround" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="GroundTileMapLayer2/Area2D" to="EndlessGround" method="_on_area_2d_body_entered"]
