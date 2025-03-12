@@ -23,6 +23,7 @@ config/layer_2="Player"
 [autoload]
 
 GameManager="*res://scripts/game_manager.gd"
+ProgressManager="*res://scripts/progress_manager.gd"
 
 [display]
 

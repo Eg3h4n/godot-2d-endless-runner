@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	ProgressManager.on_progress_update.emit()
 	return_to_pool()  # Remove the enemy when it exits the screen
 	
 func return_to_pool():

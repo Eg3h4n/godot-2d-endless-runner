@@ -1,4 +1,4 @@
-[gd_scene load_steps=325 format=4 uid="uid://c6vgbmcafvona"]
+[gd_scene load_steps=326 format=4 uid="uid://c6vgbmcafvona"]
 
 [ext_resource type="PackedScene" uid="uid://dulq0sn05by4u" path="res://background/parallax_background.tscn" id="1_pl5vr"]
 [ext_resource type="Texture2D" uid="uid://pv22i7grykx3" path="res://tileset/arch_1.png" id="2_p0xwu"]
@@ -164,6 +164,7 @@
 [ext_resource type="PackedScene" uid="uid://dyfrniiijyx54" path="res://enemies/knight/knight_character_body_2d.tscn" id="162_qypwj"]
 [ext_resource type="PackedScene" uid="uid://6ffeu1f3bn10" path="res://ui/start_game_screen.tscn" id="163_qq4uo"]
 [ext_resource type="PackedScene" uid="uid://b70bn0mwhug5k" path="res://enemies/enemy_manager.tscn" id="163_r0k35"]
+[ext_resource type="Script" uid="uid://blfmu6nws2eex" path="res://scenes/game_screen.gd" id="165_13jdl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vay0b"]
 texture = ExtResource("2_p0xwu")
@@ -1406,6 +1407,28 @@ camera = NodePath("../PlayerCamera2D")
 player_character_body_2d = NodePath("../PlayerCharacterBody2D")
 
 [node name="GameScreen" type="CanvasLayer" parent="."]
+script = ExtResource("165_13jdl")
+
+[node name="MarginContainer" type="MarginContainer" parent="GameScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameScreen/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameScreen/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Knights avoided: "
+
+[node name="ProgressAmount" type="Label" parent="GameScreen/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
 
 [connection signal="body_entered" from="GroundTileMapLayer/Area2D" to="EndlessGround" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="GroundTileMapLayer2/Area2D" to="EndlessGround" method="_on_area_2d_body_entered"]
