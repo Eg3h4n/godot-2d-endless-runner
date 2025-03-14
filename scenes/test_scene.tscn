@@ -1430,8 +1430,5 @@ text = "Knights avoided: "
 layout_mode = 2
 text = "0"
 
-[node name="PauseTextureButton" type="TextureButton" parent="GameScreen/MarginContainer"]
-layout_mode = 2
-
 [connection signal="body_entered" from="GroundTileMapLayer/Area2D" to="EndlessGround" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="GroundTileMapLayer2/Area2D" to="EndlessGround" method="_on_area_2d_body_entered"]

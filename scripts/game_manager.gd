@@ -2,6 +2,7 @@ extends Node
 
 const START_GAME_SCREEN = preload("res://ui/start_game_screen.tscn")
 const PAUSE_MENU_SCREEN = preload("res://ui/pause_menu_screen.tscn")
+const GAME_OVER_SCREEN = preload("res://ui/game_over_screen.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,3 +27,5 @@ func continue_game():
 
 func game_over():
 	get_tree().paused = true
+	var game_over_screen_instance = GAME_OVER_SCREEN.instantiate()
+	get_tree().root.add_child(game_over_screen_instance)

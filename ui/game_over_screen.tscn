@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsuahudps7mak"]
+
+[ext_resource type="Script" uid="uid://bp3kb8qp1bcr2" path="res://ui/game_over_screen.gd" id="1_dcpkc"]
+
+[node name="GameOverScreen" type="CanvasLayer"]
+script = ExtResource("1_dcpkc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
